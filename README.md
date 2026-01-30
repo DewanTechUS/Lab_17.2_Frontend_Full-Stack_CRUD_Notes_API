@@ -3,12 +3,13 @@
 This repository contains the **frontend** for the Full-Stack CRUD Notes application.  
 The frontend is built using **React** and communicates with a separate backend API to perform full CRUD operations.
 
-# Author
+## Author
 
 **Dewan Mahmud**
 
-GitHub: https://github.com/DewanTechUS  
-Website: https://dewantech.com
+- **GitHub:** https://github.com/DewanTechUS  
+- **Website:** https://dewantech.com  
+- **LinkedIn:** https://www.linkedin.com/in/dewan-mahmud-a579a0265/ 
 
 ## Features
 
