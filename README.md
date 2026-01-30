@@ -10,6 +10,7 @@ The frontend is built using **React** and communicates with a separate backend A
 - **GitHub:** https://github.com/DewanTechUS  
 - **Website:** https://dewantech.com  
 - **LinkedIn:** https://www.linkedin.com/in/dewan-mahmud-a579a0265/ 
+- **Live Demo:** https://lab-17-2-frontend-full-stack-crud-notes.onrender.com
 
 ## Features
 
