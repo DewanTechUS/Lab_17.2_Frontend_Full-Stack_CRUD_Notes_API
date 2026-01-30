@@ -1,3 +1,41 @@
+
+body.dark .note-card,
+body.dark .note-card * {
+  color: #eaeaea;
+}
+
+
+body.dark .note-card-body,
+body.dark .note-card p {
+  color: #d6d6d6;
+}
+
+body.dark .note-card-1 {
+  border-left-color: #6c8cff;
+  background: linear-gradient(180deg, rgba(30, 36, 60, 0.95), rgba(18, 18, 18, 0.9));
+}
+
+body.dark .note-card-2 {
+  border-left-color: #10b981;
+  background: linear-gradient(180deg, rgba(20, 55, 45, 0.95), rgba(18, 18, 18, 0.9));
+}
+
+body.dark .note-card-3 {
+  border-left-color: #f59e0b;
+  background: linear-gradient(180deg, rgba(60, 45, 15, 0.95), rgba(18, 18, 18, 0.9));
+}
+
+body.dark .note-card-4 {
+  border-left-color: #ef4444;
+  background: linear-gradient(180deg, rgba(60, 20, 20, 0.95), rgba(18, 18, 18, 0.9));
+}
+
+
+body.dark .note-card {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+
 * {
   box-sizing: border-box;
 }
