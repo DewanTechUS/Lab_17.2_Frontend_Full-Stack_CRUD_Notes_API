@@ -1,10 +1,25 @@
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
+async function readJsonSafe(res, label) {
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`${label} failed: ${res.status} ${text}`);
+  }
+
+  const text = await res.text().catch(() => "");
+  if (!text) return null;
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error(`${label} expected JSON but got: ${text.slice(0, 80)}...`);
+  }
+}
 
 export async function getNotes() {
   const res = await fetch(`${BASE_URL}/api/notes`);
-  if (!res.ok) throw new Error("API Error! getNotes failed.");
-  return res.json();
+  const data = await readJsonSafe(res, "getNotes");
+  return Array.isArray(data) ? data : [];
 }
 
 export async function createNote(formData) {
@@ -13,8 +28,7 @@ export async function createNote(formData) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData),
   });
-  if (!res.ok) throw new Error("API Error! createNote failed.");
-  return res.json();
+  return await readJsonSafe(res, "createNote");
 }
 
 export async function updateNote(noteId, formData) {
@@ -23,14 +37,15 @@ export async function updateNote(noteId, formData) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData),
   });
-  if (!res.ok) throw new Error("API Error! updateNote failed.");
-  return res.json();
+  return await readJsonSafe(res, "updateNote");
 }
 
 export async function deleteNote(noteId) {
   const res = await fetch(`${BASE_URL}/api/notes/${encodeURIComponent(noteId)}`, {
     method: "DELETE",
   });
-  if (!res.ok) throw new Error("API Error! deleteNote failed.");
-  return res.status === 204 ? null : res.json();
+
+  if (res.status === 204) return null;
+
+  return await readJsonSafe(res, "deleteNote");
 }
